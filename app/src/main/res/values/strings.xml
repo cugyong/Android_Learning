@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">framework_selfLearn</string>
+
+    <array name="cities">
+        <item>shanghai</item>
+        <item>beijin</item>
+        <item>shijiazhuang</item>
+        <item>changsha</item>
+        <item>wuhan</item>
+        <item>handan</item>
+        <item>baoding</item>
+        <item>tangshang</item>
+    </array>
 </resources>

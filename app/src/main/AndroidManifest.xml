@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".rxjava.RxJavaTestActivity"/>
+        <activity android:name=".citylist.XYCityListActivity"/>
     </application>
 
 </manifest>
