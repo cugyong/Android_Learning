@@ -71,6 +71,10 @@ class WrapperViewList extends ListView {
 		}
 	}
 
+	/**
+	 * getChildCount()返回的是当前页面显示的View数目
+	 * @return
+     */
 	private int getSelectorPosition() {
 		if (mSelectorPositionField == null) { // not all supported andorid
 			// version have this variable
@@ -177,6 +181,10 @@ class WrapperViewList extends ListView {
 		return firstVisibleItem;
 	}
 
+	/**
+	 * clipToPadding就是说控件的绘制区域是否在padding里面的，默认该值为true,
+	 设置为false那么子控件就能画到padding的区域了
+	 */
 	@Override
 	public void setClipToPadding(boolean clipToPadding) {
 		mClippingToPadding = clipToPadding;
@@ -187,6 +195,12 @@ class WrapperViewList extends ListView {
         mBlockLayoutChildren = block;
     }
 
+	/**
+	 * 1、保存当前状态，包括焦点，选中项，仍显示的Item等
+	 2、移除所有Item
+	 3、根据情况重新填充Item
+	 4、其他处理
+	 */
     @Override
     protected void layoutChildren() {
         if (!mBlockLayoutChildren) {

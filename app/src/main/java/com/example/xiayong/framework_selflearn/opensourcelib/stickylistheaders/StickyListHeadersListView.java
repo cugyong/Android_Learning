@@ -237,6 +237,11 @@ public class StickyListHeadersListView extends FrameLayout {
         measureHeader(mHeader);
     }
 
+    /**
+     * 保证header视图的布局参数为lp.height = LayoutParams.WRAP_CONTENT;
+     lp.width = LayoutParams.MATCH_PARENT;
+     * @param header
+     */
     private void ensureHeaderHasCorrectLayoutParams(View header) {
         ViewGroup.LayoutParams lp = header.getLayoutParams();
         if (lp == null) {
@@ -249,6 +254,10 @@ public class StickyListHeadersListView extends FrameLayout {
         }
     }
 
+    /**
+     * 计算header视图的大小
+     * @param header
+     */
     private void measureHeader(View header) {
         if (header != null) {
             final int width = getMeasuredWidth() - mPaddingLeft - mPaddingRight;
@@ -324,7 +333,7 @@ public class StickyListHeadersListView extends FrameLayout {
         final boolean isHeaderPositionOutsideAdapterRange = headerPosition > adapterCount - 1
                 || headerPosition < 0;
         if (!doesListHaveChildren || isHeaderPositionOutsideAdapterRange || isFirstViewBelowTop) {
-            clearHeader();
+            clearHeader(); //当第一个分区的header完全显示出来时，stickyHeader需要销毁
             return;
         }
 
@@ -346,7 +355,7 @@ public class StickyListHeadersListView extends FrameLayout {
                     }
                     swapHeader(header);
                 }
-                ensureHeaderHasCorrectLayoutParams(mHeader);
+                ensureHeaderHasCorrectLayoutParams(mHeader); //设置mHeader视图宽度为LayoutParams.MATCH_PARENT, 高度为LayoutParams.WRAP_CONTENT
                 measureHeader(mHeader);
                 if(mOnStickyHeaderChangedListener != null) {
                     mOnStickyHeaderChangedListener.onStickyHeaderChanged(this, mHeader, headerPosition, mHeaderId);
@@ -363,7 +372,7 @@ public class StickyListHeadersListView extends FrameLayout {
         // Calculate new header offset
         // Skip looking at the first view. it never matters because it always
         // results in a headerOffset = 0
-        for (int i = 0; i < mList.getChildCount(); i++) {
+        for (int i = 0; i < mList.getChildCount(); i++) { // 当新老StickyHeader替换时，通过设置偏移量，来使得老StickyHeader滑出去
             final View child = mList.getChildAt(i);
             final boolean doesChildHaveHeader = child instanceof WrapperView && ((WrapperView) child).hasHeader();
             final boolean isChildFooter = mList.containsFooterView(child);
@@ -383,6 +392,10 @@ public class StickyListHeadersListView extends FrameLayout {
         updateHeaderVisibilities();
     }
 
+    /**
+     * 更新header视图
+     * @param newHeader
+     */
     private void swapHeader(View newHeader) {
         if (mHeader != null) {
             removeView(mHeader);
@@ -402,6 +415,9 @@ public class StickyListHeadersListView extends FrameLayout {
         mHeader.setClickable(true);
     }
 
+    /**
+     * 如果有header的WrapperView滑动出stickyHeader，则隐藏该WrapperView的header。
+     */
     // hides the headers in the list under the sticky header.
     // Makes sure the other ones are showing
     private void updateHeaderVisibilities() {
@@ -454,26 +470,32 @@ public class StickyListHeadersListView extends FrameLayout {
         }
     }
 
+    /**
+     * 当点击事件发生在header位置及以上时，如果手指滑动没到触发滑动的距离，由header处理该事件，否则将由list处理
+     * @param ev
+     * @return
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int action = ev.getAction() & MotionEvent.ACTION_MASK;
         if (action == MotionEvent.ACTION_DOWN) {
             mDownY = ev.getY();
-            mHeaderOwnsTouch = mHeader != null && mDownY <= mHeader.getHeight() + mHeaderOffset;
+            mHeaderOwnsTouch = mHeader != null && mDownY <= mHeader.getHeight() + mHeaderOffset; // 判断是否触摸的是header
         }
 
         boolean handled;
         if (mHeaderOwnsTouch) {
-            if (mHeader != null && Math.abs(mDownY - ev.getY()) <= mTouchSlop) {
+            if (mHeader != null && Math.abs(mDownY - ev.getY()) <= mTouchSlop) { //没到触发滑动距离，由header处理事件
                 handled = mHeader.dispatchTouchEvent(ev);
             } else {
-                if (mHeader != null) {
+                if (mHeader != null) { // 模拟一个取消事件使得header不再处理事件
                     MotionEvent cancelEvent = MotionEvent.obtain(ev);
                     cancelEvent.setAction(MotionEvent.ACTION_CANCEL);
                     mHeader.dispatchTouchEvent(cancelEvent);
                     cancelEvent.recycle();
                 }
 
+                // 模拟一个点击事件，由list来插上处理后续事件
                 MotionEvent downEvent = MotionEvent.obtain(ev.getDownTime(), ev.getEventTime(), ev.getAction(), ev.getX(), mDownY, ev.getMetaState());
                 downEvent.setAction(MotionEvent.ACTION_DOWN);
                 handled = mList.dispatchTouchEvent(downEvent);
@@ -501,6 +523,9 @@ public class StickyListHeadersListView extends FrameLayout {
 
     }
 
+    /**
+     * 滑动的时候更新或者清除header
+     */
     private class WrapperListScrollListener implements OnScrollListener {
 
         @Override
@@ -576,6 +601,10 @@ public class StickyListHeadersListView extends FrameLayout {
         return 0;
     }
 
+    /**
+     * 获取Header顶部需要空出的空间
+     * @return
+     */
     private int stickyHeaderTop() {
         return mStickyHeaderTopOffset + (mClippingToPadding ? mPaddingTop : 0);
     }

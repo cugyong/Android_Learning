@@ -163,8 +163,8 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 		WrapperView wv = (convertView == null) ? new WrapperView(mContext) : (WrapperView) convertView;
 		View item = mDelegate.getView(position, wv.mItem, parent);
 		View header = null;
-		if (previousPositionHasSameHeader(position)) {
-			recycleHeaderIfExists(wv);
+		if (previousPositionHasSameHeader(position)) { //判断当前要显示内容是否是一个新的分区第一个内容，如果不是则不需要显示header，否则需要显示新的header。
+			recycleHeaderIfExists(wv); //复用现有的header视图
 		} else {
 			header = configureHeader(wv, position);
 		}

@@ -3,18 +3,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_radius"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginBottom="@dimen/padding_2">
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="@dimen/padding_30"
+            android:layout_height="@dimen/padding_30"
+            android:background="@mipmap/search_view"
+            android:layout_marginLeft="@dimen/padding_2"
+            android:layout_gravity="center_vertical"/>
+
+        <com.example.xiayong.framework_selflearn.widget.XYEditView
+            android:id="@+id/edit_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/search"
+            android:padding="@dimen/padding_2"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl"/>
+
+    <com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.ExpandableStickyListHeadersListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/sticky_list"
+        android:layout_below="@id/rl">
+    </com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.ExpandableStickyListHeadersListView>
+
     <com.example.xiayong.framework_selflearn.widget.XYSideBar
         android:id="@+id/side_bar"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/padding_90"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"/>
-
-    <com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.StickyListHeadersListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/sticky_list">
-    </com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.StickyListHeadersListView>
 
 </RelativeLayout>

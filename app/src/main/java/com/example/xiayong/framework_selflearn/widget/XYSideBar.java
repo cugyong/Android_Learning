@@ -51,7 +51,7 @@ public class XYSideBar extends View {
         mContext = context;
         mPaint = new Paint();
         mPaint.setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.font_size_14));
-        mPaint.setColor(mContext.getResources().getColor(android.R.color.holo_blue_light));
+        mPaint.setColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
         mPaint.setAntiAlias(true); //抗锯齿
         mFontSpace = mContext.getResources().getDimensionPixelSize(R.dimen.padding_2);
     }

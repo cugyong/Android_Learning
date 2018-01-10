@@ -30,4 +30,7 @@ dependencies {
     //RXJAVA dependencies
     compile 'io.reactivex.rxjava2:rxjava:2.0.7'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    // 汉子转拼音
+    compile 'com.belerweb:pinyin4j:2.5.0'
 }

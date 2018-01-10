@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">framework_selfLearn</string>
+    <string name="city_search">请输入城市</string>
 
     <array name="cities">
         <item>shanghai</item>
