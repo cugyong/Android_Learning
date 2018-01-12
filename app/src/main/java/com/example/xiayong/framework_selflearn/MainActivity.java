@@ -9,14 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.xiayong.framework_selflearn.citylist.XYCityListActivity;
+import com.example.xiayong.framework_selflearn.gesturepassword.XYGesturePasswordTestActivity;
 import com.example.xiayong.framework_selflearn.rxjava.RxJavaTestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class MainActivity extends XYActivityBase implements AdapterView.OnItemClickListener{
 
-    private final static String[] ACTICLES = {"RXjava", "CityList"};
+    private final static String[] ACTICLES = {"RXjava", "CityList", "GesturePassword"};
     private static List<Class<?>> classes = new ArrayList<Class<?>>();
 
     private ListView listView;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void _addActivity(){
         classes.add(RxJavaTestActivity.class);
         classes.add(XYCityListActivity.class);
+        classes.add(XYGesturePasswordTestActivity.class);
     }
 
     private void _init(){

@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.xiayong.framework_selflearn.R;
+import com.example.xiayong.framework_selflearn.XYActivityBase;
 import com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.ExpandableStickyListHeadersListView;
 import com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.StickyListHeadersListView;
 import com.example.xiayong.framework_selflearn.widget.XYEditView;
@@ -22,7 +23,7 @@ import java.util.List;
  * Created by xiayong on 2018/1/5.
  */
 
-public class XYCityListActivity extends Activity implements XYSideBar.OnItemTouchListener{
+public class XYCityListActivity extends XYActivityBase implements XYSideBar.OnItemTouchListener{
 
     private XYSideBar mSideBar;
     private ListView mShowListView;
