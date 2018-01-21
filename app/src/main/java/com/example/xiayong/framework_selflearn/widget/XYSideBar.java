@@ -4,17 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.xiayong.framework_selflearn.R;
 
 import java.util.List;
-
-import io.reactivex.internal.operators.observable.ObservableNever;
 
 /**
  * Created by xiayong on 2018/1/4.

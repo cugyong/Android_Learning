@@ -5,17 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.xiayong.framework_selflearn.R;
 import com.example.xiayong.framework_selflearn.opensourcelib.stickylistheaders.StickyListHeadersAdapter;
-import com.example.xiayong.framework_selflearn.utils.ParseJson;
+import com.example.xiayong.framework_selflearn.utils.XYParseJson;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by xiayong on 2018/1/5.
@@ -47,7 +45,7 @@ public class MyStickyListHeadersAdapter extends BaseAdapter implements StickyLis
             mCities.add(new CityListData(HOT_CITYS[i], HOT));
         }
         // 所有城市列表
-        Map<String, List<String>> parseData = ParseJson.parseCityDatas(mContext);
+        Map<String, List<String>> parseData = XYParseJson.parseCityDatas(mContext);
         for (String str: parseData.keySet()){
             List<String> citys = parseData.get(str);
             for (String city: citys){

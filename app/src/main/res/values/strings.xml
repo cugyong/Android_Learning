@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">framework_selfLearn</string>
     <string name="city_search">请输入城市</string>
+    <string name="add">添加项目</string>
+    <string name="delete">删除项目</string>
+    <string name="cancel">取消编辑</string>
 
     <array name="cities">
         <item>shanghai</item>
@@ -12,4 +15,15 @@
         <item>baoding</item>
         <item>tangshang</item>
     </array>
+
+
+    <string name="pull_to_refresh_pull_label">Pull to refresh</string>
+    <string name="pull_to_refresh_release_label">Release to refresh</string>
+    <string name="pull_to_refresh_refreshing_label">Loading</string>
+
+    <!-- Just use standard Pull Down String when pulling up. These can be set for languages which require it -->
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+
 </resources>

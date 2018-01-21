@@ -18,7 +18,7 @@ import com.example.xiayong.framework_selflearn.utils.XYConstant;
 public class XYGesturePasswordManager implements XYIGesturePassword{
 
     public static final String TIME_OUT = "time_out";
-    public static final int TIME = 1; // 超时时间
+    public static final int TIME = 1 * 60; // 超时时间
 
     public static XYGesturePasswordManager mInstance;
 

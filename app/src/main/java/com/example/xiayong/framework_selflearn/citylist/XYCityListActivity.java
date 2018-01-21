@@ -1,9 +1,7 @@
 package com.example.xiayong.framework_selflearn.citylist;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;

@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.xiayong.framework_selflearn.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,6 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -33,6 +34,7 @@ public class RxJavaTestActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.test);
 
 //        _testCreate1();
 //        Log.d(TAG, "_testCreate1() complete");
@@ -42,11 +44,11 @@ public class RxJavaTestActivity extends AppCompatActivity{
 
 //        _testScheduler1();
 
-        _testOperatorMap();
-        Log.d(TAG, "_testOperatorMap() complete");
-
-        _testOperatorFlatMapAndConcatMap();
-        Log.d(TAG, "_testOperatorFlatMapAndConcatMap() complete");
+//        _testOperatorMap();
+//        Log.d(TAG, "_testOperatorMap() complete");
+//
+//        _testOperatorFlatMapAndConcatMap();
+//        Log.d(TAG, "_testOperatorFlatMapAndConcatMap() complete");
     }
 
     private void _testCreate1(){

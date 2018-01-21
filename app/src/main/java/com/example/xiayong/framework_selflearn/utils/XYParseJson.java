@@ -18,7 +18,7 @@ import java.util.TreeMap;
  * Created by cugyong on 2018/1/9.
  */
 
-public class ParseJson {
+public class XYParseJson {
 
     public static Map<String, List<String> > parseCityDatas(Context context){
         Map<String, List<String> > cityDatas = new TreeMap<>();
