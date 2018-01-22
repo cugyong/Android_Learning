@@ -112,9 +112,4 @@
         <attr name="ptrDrawableBottom" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="test">
-        <attr name="test1" format="boolean"/>
-    </declare-styleable>
-
-
 </resources>

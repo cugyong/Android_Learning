@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.xiayong.framework_selflearn.citylist.XYCityListActivity;
 import com.example.xiayong.framework_selflearn.gesturepassword.XYGesturePasswordTestActivity;
+import com.example.xiayong.framework_selflearn.opensourcelib.pulltorefresh.PullToRefreshBase;
 import com.example.xiayong.framework_selflearn.opensourcelib.pulltorefresh.PullToRefreshListView;
 import com.example.xiayong.framework_selflearn.rxjava.RxJavaTestActivity;
 import com.example.xiayong.framework_selflearn.draggridview.DragGridViewActivity;
@@ -46,11 +49,18 @@ public class MainActivity extends XYActivityBase implements AdapterView.OnItemCl
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
         listView.setShowIndicator(true);
+        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                listView.onRefreshComplete();
+                Toast.makeText(MainActivity.this, "刷新完成!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Class<?> cls = classes.get(position-1);
+        Class<?> cls = classes.get(position);
         Intent intent = new Intent(MainActivity.this, cls);
         startActivity(intent);
     }
